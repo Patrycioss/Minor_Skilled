@@ -1,0 +1,5 @@
+
+Had a discussion with Bram about what is smart to focus on for my product. He suggested that it might be better to purely focus on making a model viewer and leave all the game engine stuff out as that would be out of scope. He suggested I could experiment with different graphics API's. In response to me having installed GLFW he wondered why I didn't try with the windows.h header file. 
+
+Because of this discussion I set up an abstraction layer for a window so that I could use both GLFW and windows for windows :) 
+Making GLFW work again was very easy but Windows has given me some more issues. I ran into some difficulties with not wanting to use a special entrypoint method which meant that I had to find a workaround to get some of the variables that were needed. I looked at the GLFW source code to see how they did it as they don't require the special entrypoint either and I found out they load it straight from user32.dll. I tried using that and that worked fine but I found a better solution using [this](https://devblogs.microsoft.com/oldnewthing/20041025-00/?p=37483).
